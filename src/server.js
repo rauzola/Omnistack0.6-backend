@@ -16,15 +16,15 @@ io.on("connect", socket => {
     });
 });
 
+mongoose.connect(`mongodb+srv://omnistack:omnistack@cluster0-jwq0n.mongodb.net/omnistack6?retryWrites=true&w=majority`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
 app.use((req, res, next) => {
     req.io = io;
 
     return next();
-});
-
-mongoose.connect(`mongodb+srv://omnistack:omnistack@cluster0-jwq0n.mongodb.net/omnistack6?retryWrites=true&w=majority`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
 });
 
 app.use(express.json());
